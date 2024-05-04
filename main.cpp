@@ -103,12 +103,20 @@ bool login(const vector<User>& users, string username, string password)
 int startup()
 {
     int n;
-    cout << "__________________________________________________________________________________________________" << endl;
-    cout << "|\t\t\t\tNUTRITION AND DIET PLANNER\t\t\t\t\t|" << endl;
-    cout << "__________________________________________________________________________________________________" << endl;
-    cout << "WHAT I WOULD DO FOR YOU SIR " << endl;
-    cout << "1. LOGIN\n2. REGISTER\n3. GET INFO";
+    cout << "---------------------------------------------------------------------------------------------------------" << endl;
+    cout << "|\t\t\t\t\tNUTRITION AND DIET PLANNER\t\t\t\t\t|" << endl;
+    cout << "---------------------------------------------------------------------------------------------------------" << endl;
+    cout << "CHOOSE WHAT YOU WANT TO DO\t| " << endl;
+    cout << "---------------------------------"<<endl;
+    cout << "1. LOGIN\t\t\t|" << endl;
+    cout << "---------------------------------"<<endl;
+    cout << "2. REGISTER\t\t\t|" << endl;
+    cout << "---------------------------------"<<endl;
+    cout << "3. GET INFO\t\t\t|" << endl;
+    cout << "---------------------------------"<<endl;
+
     cin >> n;
+    cout << "______________________________________________________________________________________________________"<<endl;
     return n;
 }
 
@@ -130,16 +138,18 @@ void registerUser(vector<User>& users)
     cin >> weight;
 
     users.push_back(User(username, password, age, height, weight));
-
-    cout << "User Registered Successfully!" << endl;
+    cout << "\t\t\t\t\t--------------------------------\t\t\t\t" << endl;
+    cout << "\t\t\t\t\t| User Registered Successfully! |" << endl;
+    cout << "\t\t\t\t\t--------------------------------\t\t\t\t" << endl;
+    cout << "You need to login back for the smooth operation of app";
 }
 
 int main()
 {
     int n;
     vector<User> users = {
-        User("talha", "123", 25, 175, 70), // Sample user with age 25, height 175 cm, and weight 70 kg
-        User("hassam", "456", 30, 180, 80) // Sample user with age 30, height 180 cm, and weight 80 kg
+        User("talha", "123", 20, 175, 72), // Sample user with age 25, height 175 cm, and weight 70 kg
+        User("hassam", "456", 21, 173, 68) // Sample user with age 30, height 180 cm, and weight 80 kg
     };
 
     do
@@ -159,10 +169,11 @@ int main()
 
             if (login(users, username, password))
             {
-               
-                cout << "Login successful!" << endl;
-
-                DietTracker tracker;
+                cout << "__________________________________________________________________________________________________________" <<endl<< endl;
+                cout << "\t\t\t\t\t---------------------\t\t\t\t"<<endl;
+                cout << "\t\t\t\t\t| Login successful! |\t\t\t\t" << endl;
+                cout << "\t\t\t\t\t---------------------\t\t\t\t"<<endl;
+                 DietTracker tracker;
 
                 Food apple("Apple", 52);
                 Food banana("Banana", 105);
@@ -187,6 +198,7 @@ int main()
             else
             {
                 cout << "Invalid username or password. Please try again." << endl;
+                cout << "__________________________________________________________________________________________________________" << endl;
             }
             break;
         }
@@ -201,3 +213,4 @@ int main()
 
     return 0;
 }
+
