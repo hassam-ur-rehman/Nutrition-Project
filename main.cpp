@@ -140,8 +140,26 @@ void registerUser(vector<User>& users)
     users.push_back(User(username, password, age, height, weight));
     cout << "\t\t\t\t\t--------------------------------\t\t\t\t" << endl;
     cout << "\t\t\t\t\t| User Registered Successfully! |" << endl;
-    cout << "\t\t\t\t\t--------------------------------\t\t\t\t" << endl;
-    cout << "You need to login back for the smooth operation of app";
+    cout << "\t\t\t\t\t--------------------------------\t\t\t\t" << endl<<endl;
+    cout << "\t\t\tYou need to login back for the smooth operation of app"<<endl;
+    cout << "\t\t\t_______________________________________________________" << endl;
+}
+void generalinfo()
+{
+    char  n;
+    cout << "___________________________________________________________________________"<<endl;
+    cout << "What you want know about diet ? Choose the respective character from menu "<<endl;
+    cout << "---------------------------------------------" << endl;
+    cout << "| a. Healthy BMI                            |"<<endl;
+    cout << "---------------------------------------------"<<endl;
+    cout << "---------------------------------------------" << endl;
+    cout << "| b. Maintain BMI                           |" << endl;
+    cout << "---------------------------------------------" << endl;
+    cout << "---------------------------------------------" << endl;
+    cout << "| c. Healthy Diet  Blood Pressure Patient   |" << endl;
+    cout << "---------------------------------------------" << endl;
+    cin >> n;
+
 }
 
 int main()
@@ -205,6 +223,9 @@ int main()
         case 2:
             registerUser(users);
             break;
+        case 3:
+            generalinfo();
+            break;
         default:
             cout << "Invalid choice." << endl;
             break;
@@ -213,4 +234,3 @@ int main()
 
     return 0;
 }
-
