@@ -163,13 +163,13 @@ void generalinfo()
     switch (n)
     {
     case 'a':
-        cout << "--------------------------------------------------------------------------------------"<<endl;
-        cout << "The range considered healthy varies slightly depending on the source, but generally: |"<<endl; 
-        cout << "1.BMI below 18.5 is considered underweight                                           |"<<endl;
-        cout << "2.BMI between 18.5 and 24.9 is considered normal or healthy weight                   |"<<endl;
-        cout << "3.BMI between 25 and 29.9 is considered overweigh                                    |"<<endl;
-        cout << "4.BMI of 30 or higher is considered obese                                            |"<<endl;
-        cout << "--------------------------------------------------------------------------------------" << endl;
+        cout << "----------------------------------------------------------------------------------------"<<endl;
+        cout << "| The range considered healthy varies slightly depending on the source, but generally: |"<<endl; 
+        cout << "| 1.BMI below 18.5 is considered underweight                                           |"<<endl;
+        cout << "| 2.BMI between 18.5 and 24.9 is considered normal or healthy weight                   |"<<endl;
+        cout << "| 3.BMI between 25 and 29.9 is considered overweigh                                    |"<<endl;
+        cout << "| 4.BMI of 30 or higher is considered obese                                            |"<<endl;
+        cout << "----------------------------------------------------------------------------------------" << endl;
         break;
     case 'b':
         // Code for Maintain BMI
@@ -262,7 +262,10 @@ int main()
                 cout << "\t\t\t\t\t---------------------\t\t\t\t" << endl;
                 DietTracker tracker;
                 // Display UI
-                cout << "Welcome to the Nutrition Application!" << endl;
+                cout << "\t\t\t ------------------------------------------"<<endl;
+                cout << "\t\t\t|      FOR YOUR PERSONALISED DIET PLAN    |" << endl;
+                cout << "\t\t\t------------------------------------------"<<endl;
+                cout << "----------------------------------------------------"<<endl;
                 cout << "Please answer the following questions:" << endl;
 
                 // Prompt user for medical conditions
