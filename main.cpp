@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <cmath> // for pow function
+#include <cmath> 
 using namespace std;
 
 class User
@@ -107,16 +107,16 @@ int startup()
     cout << "|\t\t\t\t\tNUTRITION AND DIET PLANNER\t\t\t\t\t|" << endl;
     cout << "---------------------------------------------------------------------------------------------------------" << endl;
     cout << "CHOOSE WHAT YOU WANT TO DO\t| " << endl;
-    cout << "---------------------------------"<<endl;
+    cout << "---------------------------------" << endl;
     cout << "1. LOGIN\t\t\t|" << endl;
-    cout << "---------------------------------"<<endl;
+    cout << "---------------------------------" << endl;
     cout << "2. REGISTER\t\t\t|" << endl;
-    cout << "---------------------------------"<<endl;
+    cout << "---------------------------------" << endl;
     cout << "3. GET INFO\t\t\t|" << endl;
-    cout << "---------------------------------"<<endl;
+    cout << "---------------------------------" << endl;
 
     cin >> n;
-    cout << "______________________________________________________________________________________________________"<<endl;
+    cout << "______________________________________________________________________________________________________" << endl;
     return n;
 }
 
@@ -140,28 +140,97 @@ void registerUser(vector<User>& users)
     users.push_back(User(username, password, age, height, weight));
     cout << "\t\t\t\t\t--------------------------------\t\t\t\t" << endl;
     cout << "\t\t\t\t\t| User Registered Successfully! |" << endl;
-    cout << "\t\t\t\t\t--------------------------------\t\t\t\t" << endl<<endl;
-    cout << "\t\t\tYou need to login back for the smooth operation of app"<<endl;
+    cout << "\t\t\t\t\t--------------------------------\t\t\t\t" << endl << endl;
+    cout << "\t\t\tYou need to login back for the smooth operation of app" << endl;
     cout << "\t\t\t_______________________________________________________" << endl;
 }
 void generalinfo()
 {
     char  n;
-    cout << "___________________________________________________________________________"<<endl;
-    cout << "What you want know about diet ? Choose the respective character from menu "<<endl;
+    cout << "____________________________________________________________________________" << endl;
+    cout << "| What you want know about diet ? Choose the respective character from menu " << endl;
+    cout << "____________________________________________________________________________" << endl;
     cout << "---------------------------------------------" << endl;
-    cout << "| a. Healthy BMI                            |"<<endl;
-    cout << "---------------------------------------------"<<endl;
+    cout << "| a. Healthy BMI                            |" << endl;
+    cout << "---------------------------------------------" << endl;
     cout << "---------------------------------------------" << endl;
     cout << "| b. Maintain BMI                           |" << endl;
     cout << "---------------------------------------------" << endl;
     cout << "---------------------------------------------" << endl;
-    cout << "| c. Healthy Diet  Blood Pressure Patient   |" << endl;
+    cout << "| c. For  Blood Pressure Patient            |" << endl;
     cout << "---------------------------------------------" << endl;
     cin >> n;
-
+    switch (n)
+    {
+    case 'a':
+        cout << "--------------------------------------------------------------------------------------"<<endl;
+        cout << "The range considered healthy varies slightly depending on the source, but generally: |"<<endl; 
+        cout << "1.BMI below 18.5 is considered underweight                                           |"<<endl;
+        cout << "2.BMI between 18.5 and 24.9 is considered normal or healthy weight                   |"<<endl;
+        cout << "3.BMI between 25 and 29.9 is considered overweigh                                    |"<<endl;
+        cout << "4.BMI of 30 or higher is considered obese                                            |"<<endl;
+        cout << "--------------------------------------------------------------------------------------" << endl;
+        break;
+    case 'b':
+        // Code for Maintain BMI
+        break;
+    case 'c':
+        // Code for Healthy Diet for Blood Pressure Patient
+        break;
+    default:
+        cout << "INVALID COMMAND !!";
+    }
 }
 
+void generateDietPlan(bool hasDiabetes, bool hasHighBloodPressure, bool hasGlutenIntolerance) {
+    cout << "Here is your personalized diet plan:" << endl;
+
+    // Non-vegetarian foods
+    vector<string> nonVegFoods = { "Chicken breast", "Salmon", "Turkey", "Lean beef", "Eggs" };
+
+    // Vegetarian foods
+    vector<string> vegFoods = { "Spinach", "Broccoli", "Quinoa", "Lentils", "Tofu" };
+
+    // Drinks
+    vector<string> drinks = { "Water", "Green tea" };
+
+    // Remove foods based on user's conditions
+    if (hasDiabetes) {
+        // Remove foods not suitable for diabetes
+        nonVegFoods.erase(remove(nonVegFoods.begin(), nonVegFoods.end(), "Salmon"), nonVegFoods.end());
+        vegFoods.erase(remove(vegFoods.begin(), vegFoods.end(), "Quinoa"), vegFoods.end());
+        drinks.erase(remove(drinks.begin(), drinks.end(), "Green tea"), drinks.end());
+    }
+
+    if (hasHighBloodPressure) {
+        // Remove foods not suitable for high blood pressure
+        nonVegFoods.erase(remove(nonVegFoods.begin(), nonVegFoods.end(), "Salmon"), nonVegFoods.end());
+        vegFoods.erase(remove(vegFoods.begin(), vegFoods.end(), "Spinach"), vegFoods.end());
+        drinks.erase(remove(drinks.begin(), drinks.end(), "Green tea"), drinks.end());
+    }
+    if (hasGlutenIntolerance) {
+        // Remove foods not suitable for high blood pressure
+        nonVegFoods.erase(remove(nonVegFoods.begin(), nonVegFoods.end(), "Turkey"), nonVegFoods.end());
+        vegFoods.erase(remove(vegFoods.begin(), vegFoods.end(), "Tofu"), vegFoods.end());
+        drinks.erase(remove(drinks.begin(), drinks.end(), "Water"), drinks.end());
+    }
+
+    // Display recommendations
+    cout << "Non-Vegetarian Foods:" << endl;
+    for (const auto& food : nonVegFoods) {
+        cout << "- " << food << endl;
+    }
+
+    cout << "Vegetarian Foods:" << endl;
+    for (const auto& food : vegFoods) {
+        cout << "- " << food << endl;
+    }
+
+    cout << "Drinks:" << endl;
+    for (const auto& drink : drinks) {
+        cout << "- " << drink << endl;
+    }
+}
 int main()
 {
     int n;
@@ -187,22 +256,36 @@ int main()
 
             if (login(users, username, password))
             {
-                cout << "__________________________________________________________________________________________________________" <<endl<< endl;
-                cout << "\t\t\t\t\t---------------------\t\t\t\t"<<endl;
+                cout << "__________________________________________________________________________________________________________" << endl << endl;
+                cout << "\t\t\t\t\t---------------------\t\t\t\t" << endl;
                 cout << "\t\t\t\t\t| Login successful! |\t\t\t\t" << endl;
-                cout << "\t\t\t\t\t---------------------\t\t\t\t"<<endl;
-                 DietTracker tracker;
+                cout << "\t\t\t\t\t---------------------\t\t\t\t" << endl;
+                DietTracker tracker;
+                // Display UI
+                cout << "Welcome to the Nutrition Application!" << endl;
+                cout << "Please answer the following questions:" << endl;
 
-                Food apple("Apple", 52);
-                Food banana("Banana", 105);
-                Food salad("Salad", 150);
+                // Prompt user for medical conditions
+                cout << "Do you have diabetes? (yes/no): ";
+                string hasDiabetes;
+                cin >> hasDiabetes;
 
-                tracker.addFood(apple);
-                tracker.addFood(banana);
-                tracker.addFood(salad);
+                cout << "Do you have high blood pressure? (yes/no): ";
+                string hasHighBloodPressure;
+                cin >> hasHighBloodPressure;
 
-                tracker.display();
+                cout << "Do you have gluten intolerance? (yes/no): ";
+                string hasGlutenIntolerance;
+                cin >> hasGlutenIntolerance;
 
+                // Process user input and generate diet plan
+                bool diabetes = (hasDiabetes == "yes");
+                bool highBloodPressure = (hasHighBloodPressure == "yes");
+                bool glutenIntolerance = (hasGlutenIntolerance == "yes");
+
+                generateDietPlan(diabetes, highBloodPressure, glutenIntolerance);
+
+                cout << "Thank you for using the Nutrition Application!" << endl;
                 cout << "User Info:" << endl;
                 for (const auto& user : users)
                 {
